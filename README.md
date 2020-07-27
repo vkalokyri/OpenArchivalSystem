@@ -26,3 +26,4 @@ Technologies:
 2. eXist XML Database
 3. XMLBeans (XML Binding) Framework
 4. XML, XSLT, XQUERY, XPATH
+5. DAO
