@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xml.netbeans.org/schema/MyBookSchema"
+    xmlns:tns="http://xml.netbeans.org/schema/MyBookSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+        
+       
+     <!-- LangString Type -->
+     <xsd:complexType name="LangString">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute ref="xml:lang" use="optional"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+     </xsd:complexType>
+
+     <!-- LogInfo Type -->
+     <xsd:complexType name="LogInfo">      
+        <xsd:attribute name="date" type="xsd:dateTime" use="required"/>
+     </xsd:complexType>
+
+     <!-- HeaderInfo Type -->
+     <xsd:complexType name="HeaderInfo">
+        <xsd:sequence>             
+            <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"/>          
+            <xsd:element name="created" type="tns:LogInfo" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="lastModified" type="tns:LogInfo" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1"/>   
+            <xsd:element name="deleted" type="tns:LogInfo" minOccurs="0" maxOccurs="1"/>           
+        </xsd:sequence>         
+     </xsd:complexType> 
+        
+    <!-- Collection Type -->
+    <xsd:element name="Collection">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="header" type="tns:HeaderInfo" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="metadata" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="title" type="tns:LangString" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>  
+                <xsd:element name="books" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="book" type="tns:Book" minOccurs="0" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+         </xsd:complexType>
+     </xsd:element>
+
+
+
+
+    <!-- Book Type -->    
+   <!--<xsd:element name="book"> -->
+        <xsd:complexType name="Book">      
+            <xsd:sequence>
+                <xsd:element name="header" type="tns:HeaderInfo" minOccurs="1" maxOccurs="1"/>
+                 <xsd:element name="metadata" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <!-- Book metadata elements -->
+                             <xsd:element name="isbn" type="xsd:string" minOccurs="0" maxOccurs="1"/>   
+                             <xsd:element name="title" type="tns:LangString" minOccurs="1" maxOccurs="unbounded"/> 
+                             <xsd:element name="creator" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+                             <xsd:element name="publisher" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                             <xsd:element name="editor" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                             <xsd:element name="copyrightDate" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+                             <xsd:element name="publicationDate" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+                             <xsd:element name="reprintingDate" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+                             <xsd:element name="comments" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                             <xsd:element name="description" type="tns:LangString" minOccurs="0" maxOccurs="unbounded"/>
+                             <xsd:element name="publicationPlace" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                             <xsd:element name="noOfPages" type="xsd:integer" minOccurs="0" maxOccurs="1"/>    
+                             <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                             <xsd:element name="rights" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                             <xsd:element name="format" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                             <xsd:element name="objectUri" minOccurs="0" maxOccurs="1">
+                                <xsd:complexType>
+                                    <xsd:simpleContent>
+                                        <xsd:extension base="xsd:anyURI">                                            
+                                            <xsd:attribute name="isLocal" type="xsd:boolean" use="required"/>
+                                        </xsd:extension>
+                                    </xsd:simpleContent>
+                                </xsd:complexType>
+                             </xsd:element>
+                        </xsd:sequence>
+                     </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    <!--</xsd:element>-->
+    
+    
+    
+
+</xsd:schema>

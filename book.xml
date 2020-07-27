@@ -1,0 +1,28 @@
+<Collection xmlns="http://xml.netbeans.org/schema/MyBookSchema">
+  <header>
+    <created date="2012-01-02T20:17:38.994+02:00"/>
+  </header>
+  <metadata>
+    <title xml:lang="English">CollectionTitle</title>
+  </metadata>
+  <books>
+    <book>
+      <header>
+        <created date="2012-01-02T20:17:39.022+02:00"/>
+      </header>
+      <metadata>
+        <title xml:lang="Greek">Book1Title</title>
+        <creator>Valia</creator>
+      </metadata>
+    </book>
+    <book>
+      <header>
+        <created date="2012-01-02T20:17:39.034+02:00"/>
+      </header>
+      <metadata>
+        <title xml:lang="English">Book2Title</title>
+        <creator>Kalokyri</creator>
+      </metadata>
+    </book>
+  </books>
+</Collection>
